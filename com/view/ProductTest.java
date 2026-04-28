@@ -10,8 +10,8 @@ import com.service.ProductServiceImpl;
 public class ProductTest {
 	public static void main(String[] args) {
 		add();
-		getAll();
-		delete();
+//		getAll();
+//		delete();
 	}
 	
 	static void add() {
