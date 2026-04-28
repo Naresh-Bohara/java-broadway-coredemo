@@ -9,8 +9,8 @@ import com.service.ProductServiceImpl;
 
 public class ProductTest {
 	public static void main(String[] args) {
-		add();
-//		getAll();
+//		add();
+		getAll();
 //		delete();
 	}
 	
@@ -48,7 +48,7 @@ public class ProductTest {
 	static void delete(){
 		ProductService service = new ProductServiceImpl();
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter index of product you want to dlete: ");
+		System.out.println("Please enter index of product you want to delete: ");
 		int index = sc.nextInt();
 		service.deleteProduct(index);
 		
