@@ -11,8 +11,18 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void addProduct(Product p) {
-		plist.add(p);
-		System.out.println("Product added successfully! plist-size = "+ plist.size());
+//		plist.add(p);
+//		System.out.println("Product added successfully! plist-size = "+ plist.size());
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+//			String sql = "insert into "
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
