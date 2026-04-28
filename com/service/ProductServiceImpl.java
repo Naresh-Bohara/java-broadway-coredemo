@@ -80,6 +80,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> getAllProducts() {
+//		 return plist;
 	    
 	    List<Product> plist = new ArrayList<>();
 
