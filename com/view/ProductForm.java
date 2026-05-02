@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class ProductForm extends JFrame {
 
@@ -40,8 +41,9 @@ public class ProductForm extends JFrame {
 	public ProductForm() {
 		setTitle("Product Form");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 699, 364);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(64, 128, 128));
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -91,6 +93,12 @@ public class ProductForm extends JFrame {
 		productCompany.setBounds(161, 191, 180, 29);
 		contentPane.add(productCompany);
 		productCompany.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Add Product");
+		btnNewButton.setForeground(new Color(64, 128, 128));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setBounds(161, 249, 99, 29);
+		contentPane.add(btnNewButton);
 
 	}
 }
