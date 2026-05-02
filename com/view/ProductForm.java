@@ -8,11 +8,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JTextField;
 
 public class ProductForm extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField productName;
+	private JTextField productPrice;
 
 	/**
 	 * Launch the application.
@@ -55,6 +58,25 @@ public class ProductForm extends JFrame {
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(20, 73, 120, 29);
 		contentPane.add(lblNewLabel_1);
+		
+		productName = new JTextField();
+		productName.setForeground(new Color(64, 128, 128));
+		productName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		productName.setBounds(150, 76, 180, 28);
+		contentPane.add(productName);
+		productName.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Product Price");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setBounds(20, 129, 120, 29);
+		contentPane.add(lblNewLabel_2);
+		
+		productPrice = new JTextField();
+		productPrice.setForeground(new Color(64, 128, 128));
+		productPrice.setBounds(150, 131, 180, 27);
+		contentPane.add(productPrice);
+		productPrice.setColumns(10);
 
 	}
 }
