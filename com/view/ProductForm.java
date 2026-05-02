@@ -49,7 +49,12 @@ public class ProductForm extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
 		lblNewLabel.setBounds(10, 28, 252, 35);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Product Name");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setBounds(20, 73, 120, 29);
+		contentPane.add(lblNewLabel_1);
 
 	}
-
 }
