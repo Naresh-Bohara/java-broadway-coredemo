@@ -16,6 +16,7 @@ public class ProductForm extends JFrame {
 	private JPanel contentPane;
 	private JTextField productName;
 	private JTextField productPrice;
+	private JTextField productCompany;
 
 	/**
 	 * Launch the application.
@@ -62,7 +63,7 @@ public class ProductForm extends JFrame {
 		productName = new JTextField();
 		productName.setForeground(new Color(64, 128, 128));
 		productName.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		productName.setBounds(150, 76, 180, 28);
+		productName.setBounds(161, 73, 180, 28);
 		contentPane.add(productName);
 		productName.setColumns(10);
 		
@@ -74,9 +75,22 @@ public class ProductForm extends JFrame {
 		
 		productPrice = new JTextField();
 		productPrice.setForeground(new Color(64, 128, 128));
-		productPrice.setBounds(150, 131, 180, 27);
+		productPrice.setBounds(161, 132, 180, 27);
 		contentPane.add(productPrice);
 		productPrice.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Product Company");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(20, 186, 131, 35);
+		contentPane.add(lblNewLabel_3);
+		
+		productCompany = new JTextField();
+		productCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		productCompany.setForeground(new Color(64, 128, 128));
+		productCompany.setBounds(161, 191, 180, 29);
+		contentPane.add(productCompany);
+		productCompany.setColumns(10);
 
 	}
 }
