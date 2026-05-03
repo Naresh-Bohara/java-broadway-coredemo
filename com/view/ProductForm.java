@@ -5,13 +5,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.model.Product;
+import com.service.ProductService;
+import com.service.ProductServiceImpl;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class ProductForm extends JFrame {
 
@@ -19,8 +28,7 @@ public class ProductForm extends JFrame {
 	private JPanel contentPane;
 	private JTextField productName;
 	private JTextField productPrice;
-	private JTextField productCompany;
-
+	private JComboBox<String> productCompany;
 	/**
 	 * Launch the application.
 	 */
@@ -89,23 +97,33 @@ public class ProductForm extends JFrame {
 		lblNewLabel_3.setBounds(20, 186, 131, 35);
 		contentPane.add(lblNewLabel_3);
 		
-		productCompany = new JTextField();
-		productCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		productCompany.setForeground(new Color(64, 128, 128));
-		productCompany.setBounds(161, 191, 180, 29);
-		contentPane.add(productCompany);
-		productCompany.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Add Product");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// get values from productForm and set to product object.
+				Product p = new Product();
 				
+				p.setName(productName.getText());
+				p.setPrice(Integer.parseInt(productPrice.getText()));
+				p.setCompany(productCompany.getSelectedItem().toString());
+				
+				ProductService service = new ProductServiceImpl();
+				service.addProduct(p);
+				
+				JOptionPane.showMessageDialog(null, "added success!");
 			}
 		});
 		btnNewButton.setForeground(new Color(64, 128, 128));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(161, 249, 99, 29);
 		contentPane.add(btnNewButton);
+		
+		productCompany = new JComboBox<>();
+		productCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		productCompany.setModel(new DefaultComboBoxModel(new String[] {"select", "Dell", "CG", "Samsung", "Apple"}));
+		productCompany.setForeground(new Color(64, 128, 128));
+		productCompany.setBounds(161, 188, 185, 35);
+		contentPane.add(productCompany);
 
 	}
 }
