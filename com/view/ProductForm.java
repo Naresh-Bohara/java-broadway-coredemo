@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProductForm extends JFrame {
 
@@ -95,6 +97,11 @@ public class ProductForm extends JFrame {
 		productCompany.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Add Product");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton.setForeground(new Color(64, 128, 128));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(161, 249, 99, 29);
