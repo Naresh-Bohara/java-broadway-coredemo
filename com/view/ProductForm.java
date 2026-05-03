@@ -101,6 +101,24 @@ public class ProductForm extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// get values from productForm and set to product object.
+				
+				// form validation:
+				if(productName.getText().isBlank()) {
+					JOptionPane.showMessageDialog(productName, "Name is required!");
+					return;
+				}
+				
+				if(productPrice.getText().isBlank()) {
+					JOptionPane.showMessageDialog(productPrice, "Price is required!");
+					return;
+				}
+				
+				if(productCompany.getSelectedIndex() == 0) {
+					JOptionPane.showMessageDialog(productCompany, "Company is required!");
+					return;
+				}
+				
+				
 				Product p = new Product();
 				
 				p.setName(productName.getText());
@@ -111,6 +129,11 @@ public class ProductForm extends JFrame {
 				service.addProduct(p);
 				
 				JOptionPane.showMessageDialog(null, "added success!");
+				
+				//clear input
+				productName.setText("");
+				productPrice.setText("");
+				productCompany.setSelectedIndex(0);
 			}
 		});
 		btnNewButton.setForeground(new Color(64, 128, 128));
