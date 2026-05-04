@@ -118,7 +118,6 @@ public class ProductForm extends JFrame {
 					return;
 				}
 				
-				
 				Product p = new Product();
 				
 				p.setName(productName.getText());
