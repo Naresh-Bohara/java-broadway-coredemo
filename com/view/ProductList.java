@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class ProductList extends JFrame {
 
@@ -37,14 +40,15 @@ public class ProductList extends JFrame {
 	public ProductList() {
 		setTitle("Product List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 721, 319);
+		setBounds(100, 100, 752, 335);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 20, 663, 262);
+		scrollPane.setBounds(37, 55, 635, 217);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -56,6 +60,12 @@ public class ProductList extends JFrame {
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("Product List");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBounds(61, 21, 183, 24);
+		contentPane.add(lblNewLabel);
 
 	}
 }
