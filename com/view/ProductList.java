@@ -52,7 +52,7 @@ public class ProductList extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column"
+				"Id", "Name", "Price", "Company"
 			}
 		));
 		scrollPane.setViewportView(table);
