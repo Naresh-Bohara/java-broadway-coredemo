@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.db.DB;
 import com.model.Product;
 
 public class ProductServiceImpl implements ProductService {
@@ -88,17 +89,18 @@ public class ProductServiceImpl implements ProductService {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 
 	        // 1. create connection
-	        Connection con = DriverManager.getConnection(
-	                "jdbc:mysql://localhost:3306/javabroadwaytestdb",
-	                "root",
-	                "Naresh@123#"
-	        );
+//	        Connection con = DriverManager.getConnection(
+//	                "jdbc:mysql://localhost:3306/javabroadwaytestdb",
+//	                "root",
+//	                "Naresh@123#"
+//	        );
 
 	        // 2. write sql query
 	        String sql = "select * from product";
 
 	        // 3. create statement
-	        Statement stm = con.createStatement();
+//	        Statement stm = con.createStatement();
+	        Statement stm = DB.connectDB().createStatement();
 
 	        // 4. execute query
 	        ResultSet rs = stm.executeQuery(sql);
@@ -116,7 +118,7 @@ public class ProductServiceImpl implements ProductService {
 	        }
 
 	        // 6. close connection
-	        con.close();
+//	        con.close();
 
 	    } catch (Exception e) {
 	        e.printStackTrace();

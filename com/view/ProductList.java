@@ -8,9 +8,20 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.model.Product;
+import com.service.ProductService;
+import com.service.ProductServiceImpl;
+
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.util.List;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProductList extends JFrame {
 
@@ -40,7 +51,7 @@ public class ProductList extends JFrame {
 	public ProductList() {
 		setTitle("Product List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 752, 335);
+		setBounds(100, 100, 765, 406);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,10 +73,46 @@ public class ProductList extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel = new JLabel("Product List");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(61, 21, 183, 24);
+		lblNewLabel.setBounds(229, 21, 183, 24);
 		contentPane.add(lblNewLabel);
-
+		
+		JButton btnNewButton = new JButton("Delete");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(table.getSelectedRow()<0) {
+					JOptionPane.showMessageDialog(null, "select any row!");
+					return;
+				}
+				
+				int srow = table.getSelectedRow();
+				int pid = (int) table.getModel().getValueAt(srow, 0);
+				
+				ProductService service = new ProductServiceImpl();
+				service.deleteProduct(pid);
+				JOptionPane.showMessageDialog(null, "deleted success!");
+				displayData();
+			}
+		});
+		btnNewButton.setForeground(new Color(255, 0, 0));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(588, 287, 85, 29);
+		contentPane.add(btnNewButton);
+		
+		displayData();
+	}
+	
+	// displaly data in jTable
+	private void displayData() {
+		ProductService service = new ProductServiceImpl();
+		List<Product> plist = service.getAllProducts();
+		
+		DefaultTableModel tmodel = (DefaultTableModel) table.getModel();
+		tmodel.setRowCount(0); // table data reset
+		
+		for(Product prod: plist) {
+			tmodel.addRow(new Object[] {prod.getId(), prod.getName(), prod.getPrice(), prod.getCompany()});
+		}
 	}
 }
