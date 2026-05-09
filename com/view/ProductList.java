@@ -51,7 +51,7 @@ public class ProductList extends JFrame {
 	public ProductList() {
 		setTitle("Product List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 765, 406);
+		setBounds(100, 100, 945, 413);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,7 +59,7 @@ public class ProductList extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(37, 55, 635, 217);
+		scrollPane.setBounds(433, 54, 476, 242);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -75,7 +75,7 @@ public class ProductList extends JFrame {
 		JLabel lblNewLabel = new JLabel("Product List");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(229, 21, 183, 24);
+		lblNewLabel.setBounds(602, 20, 183, 24);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Delete");
@@ -97,8 +97,14 @@ public class ProductList extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(255, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(588, 287, 85, 29);
+		btnNewButton.setBounds(825, 306, 85, 29);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("Name");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setBounds(28, 54, 104, 24);
+		contentPane.add(lblNewLabel_1);
 		
 		displayData();
 	}
