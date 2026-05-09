@@ -10,4 +10,6 @@ public interface ProductService {
 	void deleteProduct(int index);
 	
 	List<Product>  getAllProducts();
+	
+	void updateProduct(Product p);
 }

@@ -2,6 +2,7 @@ package com.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -125,6 +126,23 @@ public class ProductServiceImpl implements ProductService {
 	    }
 
 	    return plist;
+	}
+
+	@Override
+	public void updateProduct(Product p) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String sql = "update product set name=?,  price=?, company=? where id=?";
+			PreparedStatement pstm = DB.connectDB().prepareStatement(sql);
+			pstm.setString(1, p.getName());
+			pstm.setInt(2, p.getPrice());
+			pstm.setString(3, p.getCompany());
+			pstm.setInt(4, p.getId());
+			pstm.executeUpdate();
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}	
 	}
 	
 }
