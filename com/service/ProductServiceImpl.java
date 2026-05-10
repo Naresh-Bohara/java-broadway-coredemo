@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
 //		plist.remove(index);
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");  
 			
 //			1. createa connection: getConnection(url, un, psw)
 			Connection con = DriverManager.getConnection(
