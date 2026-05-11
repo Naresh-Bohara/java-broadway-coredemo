@@ -144,5 +144,32 @@ public class ProductServiceImpl implements ProductService {
 			e.printStackTrace();
 		}	
 	}
+
+	@Override
+	public List<Product> searchProduct(String sdata) {
+		 List<Product> plist = new ArrayList<>();
+
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+		        String sql = "select * from product where name like '%"+sdata+"%' or company like '%"+sdata+"%'";
+		        Statement stm = DB.connectDB().createStatement();
+		        ResultSet rs = stm.executeQuery(sql);
+		        while (rs.next()) {
+		            Product p = new Product();
+
+		            p.setId(rs.getInt("id"));
+		            p.setName(rs.getString("name"));
+		            p.setCompany(rs.getString("company"));
+		            p.setPrice(rs.getInt("price"));
+
+		            plist.add(p);
+		        }
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+
+		    return plist;
+	}
 	
 }

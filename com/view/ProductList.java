@@ -25,6 +25,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.print.PrinterException;
 
 public class ProductList extends JFrame {
 
@@ -139,9 +142,9 @@ public class ProductList extends JFrame {
 		JComboBox productCompanyCmb = new JComboBox();
 		productCompanyCmb.setForeground(new Color(64, 128, 128));
 		productCompanyCmb.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		productCompanyCmb.setModel(new DefaultComboBoxModel(new String[] {"---select---", "apple", "redmi", "nokia", "cg"}));
+		productCompanyCmb.setModel(new DefaultComboBoxModel(new String[] {"---select---", "Apple", "Redmi", "CG", "Samsung"}));
 		productCompanyCmb.setBounds(105, 144, 168, 35);
-		contentPane.add(productCompanyCmb);
+		contentPane.add(productCompanyCmb); 
 		
 		JButton btnNewButton_1 = new JButton("Update");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -190,9 +193,39 @@ public class ProductList extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		searchTxt = new JTextField();
+		searchTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String sdata = searchTxt.getText().trim();
+				ProductService service = new ProductServiceImpl();
+				List<Product> plist  = service.searchProduct(sdata);
+				
+				DefaultTableModel tmodel = (DefaultTableModel) table.getModel();
+				tmodel.setRowCount(0); 
+				
+				for(Product prod: plist) {
+					tmodel.addRow(new Object[] {prod.getId(), prod.getName(), prod.getPrice(), prod.getCompany()});
+				}
+			}
+		});
 		searchTxt.setBounds(563, 16, 161, 24);
 		contentPane.add(searchTxt);
 		searchTxt.setColumns(10);
+		
+		JButton btnPrint = new JButton("Print");
+		btnPrint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					table.print();
+				} catch (PrinterException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnPrint.setForeground(new Color(128, 128, 255));
+		btnPrint.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnPrint.setBounds(500, 302, 85, 29);
+		contentPane.add(btnPrint);
 		
 		displayData();
 	}
