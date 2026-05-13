@@ -219,6 +219,7 @@ public class ProductList extends JFrame {
 					table.print();
 				} catch (PrinterException e1) {
 					e1.printStackTrace();
+//					System.out.println("done");
 				}    
 			}
 		});
