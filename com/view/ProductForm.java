@@ -29,6 +29,7 @@ public class ProductForm extends JFrame {
 	private JTextField productName;
 	private JTextField productPrice;
 	private JComboBox<String> productCompany;
+	private ProductList parent;
 	/**
 	 * Launch the application.
 	 */
@@ -36,7 +37,7 @@ public class ProductForm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProductForm frame = new ProductForm();
+					ProductForm frame = new ProductForm(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,9 +49,10 @@ public class ProductForm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ProductForm() {
+	public ProductForm(ProductList parent) {
+		this.parent = parent;
 		setTitle("Product Form");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 699, 364);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(64, 128, 128));
@@ -126,7 +128,9 @@ public class ProductForm extends JFrame {
 				
 				ProductService service = new ProductServiceImpl();
 				service.addProduct(p);
-				
+				if(parent != null) {
+					parent.displayData();
+				}
 				JOptionPane.showMessageDialog(null, "added success!");
 				
 				//clear input

@@ -61,7 +61,7 @@ public class ProductList extends JFrame {
 	public ProductList() {
 		setTitle("Product List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 945, 413);
+		setBounds(100, 100, 945, 534);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(64, 128, 128));
 		contentPane.setBackground(new Color(64, 128, 128));
@@ -114,36 +114,36 @@ public class ProductList extends JFrame {
 		JLabel productName = new JLabel("Name");
 		productName.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		productName.setForeground(new Color(255, 255, 255));
-		productName.setBounds(28, 54, 104, 24);
+		productName.setBounds(10, 134, 104, 24);
 		contentPane.add(productName);
 		
 		productNameTxt = new JTextField();
-		productNameTxt.setBounds(105, 50, 168, 35);
+		productNameTxt.setBounds(105, 131, 168, 35);
 		contentPane.add(productNameTxt);
 		productNameTxt.setColumns(10);
 		
 		JLabel productPrice = new JLabel("Price\r\n");
 		productPrice.setForeground(Color.WHITE);
 		productPrice.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		productPrice.setBounds(28, 98, 104, 24);
+		productPrice.setBounds(10, 179, 104, 24);
 		contentPane.add(productPrice);
 		
 		productPriceTxt = new JTextField();
 		productPriceTxt.setColumns(10);
-		productPriceTxt.setBounds(105, 95, 168, 35);
+		productPriceTxt.setBounds(105, 176, 168, 35);
 		contentPane.add(productPriceTxt);
 		
 		JLabel productCompany = new JLabel("Company");
 		productCompany.setForeground(Color.WHITE);
 		productCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		productCompany.setBounds(28, 147, 104, 24);
+		productCompany.setBounds(10, 226, 104, 24);
 		contentPane.add(productCompany);
 		
 		JComboBox productCompanyCmb = new JComboBox();
 		productCompanyCmb.setForeground(new Color(64, 128, 128));
 		productCompanyCmb.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		productCompanyCmb.setModel(new DefaultComboBoxModel(new String[] {"---select---", "Apple", "Redmi", "CG", "Samsung"}));
-		productCompanyCmb.setBounds(105, 144, 168, 35);
+		productCompanyCmb.setBounds(105, 221, 168, 35);
 		contentPane.add(productCompanyCmb); 
 		
 		JButton btnNewButton_1 = new JButton("Update");
@@ -163,7 +163,7 @@ public class ProductList extends JFrame {
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_1.setForeground(new Color(64, 128, 128));
-		btnNewButton_1.setBounds(182, 193, 91, 29);
+		btnNewButton_1.setBounds(182, 263, 91, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnEdit = new JButton("Edit");
@@ -228,11 +228,21 @@ public class ProductList extends JFrame {
 		btnPrint.setBounds(500, 302, 85, 29);
 		contentPane.add(btnPrint);
 		
+		JButton addProduct = new JButton("Add Product");
+		addProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ProductForm(ProductList.this).setVisible(true);
+			}
+		});
+		addProduct.setForeground(new Color(64, 128, 128));
+		addProduct.setBounds(105, 53, 131, 35);
+		contentPane.add(addProduct);
+		
 		displayData();
 	}
 	
 	// displaly data in jTable
-	private void displayData() {
+	public void displayData() {
 		ProductService service = new ProductServiceImpl();
 		List<Product> plist = service.getAllProducts();
 		
